@@ -1451,9 +1451,33 @@ section,
   color: var(--accent-color);
 }
 
+.stylishbg{
+	background-color: black;
+	border-radius: 5px;
+}
+
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+.carousel-item .zoom-img {
+  /* Ensure the image fills the container */
+  width: 100%;
+  height: auto;
+  /* Set initial scale and smooth transition */
+  transform: scale(1);
+  transition: transform 12s ease; /* Adjust duration for desired speed */
+}
+
+.carousel-item.active .zoom-img {
+  /* Scale up the image when the carousel item is active */
+  transform: scale(1.10); /* Zooms in by 15% */
+}
+
+/* Optional: Hide overflow so the zoomed image doesn't go outside the carousel area */
+.carousel-inner {
+  overflow: hidden;
 }
