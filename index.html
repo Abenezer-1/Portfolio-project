@@ -493,7 +493,9 @@ business needs.</p>
 
               </div>
             </form>
-			<div id="statusMessage"></div>
+			<p>
+			<div style="color:green" id="successMessage"></div>
+			<div style="color:red" id="errorMessage"></div>
           </div><!-- End Contact Form -->
 
         </div>
@@ -547,7 +549,8 @@ business needs.</p>
   <script src="js/main.js"></script>
 <script>
     const form = document.getElementById('contactForm');
-    const statusMessage = document.getElementById('statusMessage');
+    const successMessage = document.getElementById('successMessage');
+	const errorMessage = document.getElementById('errorMessage');
 
     form.addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the default form submission
@@ -564,19 +567,23 @@ business needs.</p>
             }
         }).then(response => {
             if (response.ok) {
-                statusMessage.textContent = 'Thank you for your message!';
+                successMessage.textContent = 'Thank you, The email has sent successfully!';
+				errorMessage.textContent = '';
                 form.reset(); // Clear the form fields
             } else {
                 response.json().then(data => {
                     if (Object.hasOwnProperty.call(data, 'errors')) {
-                        statusMessage.textContent = data.errors.map(error => error.message).join(', ');
+                        errorMessage.textContent = data.errors.map(error => error.message).join(', ');
+						successMessage.textContent = '';
                     } else {
-                        statusMessage.textContent = 'Oops! There was a problem submitting your form.';
+                        errorMessage.textContent = 'Oops! There was a problem submitting your form.';
+						successMessage.textContent = '';
                     }
                 })
             }
         }).catch(error => {
-            statusMessage.textContent = 'Oops! There was a network error.';
+            errorMessage.textContent = 'Oops! There was a network error.';
+			successMessage.textContent = '';
         });
     });
 </script>
