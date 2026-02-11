@@ -178,6 +178,10 @@ h6 {
 .header.header-show {
   left: 0;
 }
+.project-title{
+	font-style: Arial;
+	font-wait: bold
+}
 
 .header .header-toggle {
   color: var(--contrast-color);
@@ -1456,6 +1460,7 @@ section,
 	border-radius: 5px;
 }
 
+
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
@@ -1465,7 +1470,7 @@ section,
 
 .carousel-item .zoom-img {
   /* Ensure the image fills the container */
-  width: 100%;
+  width: 50%;
   height: auto;
   /* Set initial scale and smooth transition */
   transform: scale(1);
